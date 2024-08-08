@@ -21,13 +21,13 @@ public class HabitCompletionController {
     }
 
     @PostMapping
-    public ResponseEntity<HabitCompletionDto> save(@RequestBody CreateHabitCompletionDto body, @RequestHeader("Authorization") String authorization) throws UserNotFoundException {
-        habitCompletionService.save(body, authorization);
+    public ResponseEntity<HabitCompletionDto> save(@RequestBody CreateHabitCompletionDto body) throws HabitNotFoundException {
+        habitCompletionService.save(body);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
-    public ResponseEntity<List<HabitCompletionDto>> findByUserAndHabit(@RequestParam("habitId") String habitId, @RequestHeader("Authorization") String authorization) throws UserNotFoundException, HabitNotFoundException {
-        return ResponseEntity.ok().body(habitCompletionService.findByUserAndHabit(habitId, authorization));
+    public ResponseEntity<List<HabitCompletionDto>> findByHabit(@RequestParam("habitId") String habitId) throws HabitNotFoundException {
+        return ResponseEntity.ok().body(habitCompletionService.findByHabit(habitId));
     }
 }

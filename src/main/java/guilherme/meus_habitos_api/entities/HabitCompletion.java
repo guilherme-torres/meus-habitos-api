@@ -12,10 +12,6 @@ public class HabitCompletion {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @ManyToOne
     @JoinColumn(name = "habit_id", nullable = false)
     private Habit habit;
 
@@ -31,14 +27,6 @@ public class HabitCompletion {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Habit getHabit() {
